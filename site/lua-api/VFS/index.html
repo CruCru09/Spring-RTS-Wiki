@@ -1,0 +1,6743 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Spring RTS Wiki">
+      
+      
+        <meta name="author" content="Cru">
+      
+      
+        <link rel="canonical" href="https://www.example.com/lua-api/VFS/">
+      
+      
+      
+        <link rel="prev" href="../Script/">
+      
+      
+        <link rel="next" href="../tracy/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../Assets/spring-logo-header-small.png">
+      <meta name="generator" content="zensical-0.1.2">
+    
+    
+      
+        <title>VFS - Spring RTS Wiki</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        跳转至
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Spring RTS Wiki" class="md-header__button md-logo" aria-label="Spring RTS Wiki" data-md-component="logo">
+      
+  <img src="../../Assets/spring-logo-header-small.png" alt="Spring RTS Wiki">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">导航栏</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spring RTS Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              VFS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun-moon" viewBox="0 0 24 24"><path d="M12 2v2M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715M16 12a4 4 0 0 0-4-4M19 5l-1.256 1.256M20 12h2"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">查找</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="查找">
+  <button type="button" class="md-search__button">
+    查找
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Game/" class="md-tabs__link">
+        
+  
+  游戏
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Develop/" class="md-tabs__link">
+        
+  
+  开发
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  API 参考
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Hosting/" class="md-tabs__link">
+        
+  
+  托管
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Link/" class="md-tabs__link">
+        
+  
+  链接
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Log/" class="md-tabs__link">
+        
+  
+  日志
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../About/" class="md-tabs__link">
+        
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Spring RTS Wiki" class="md-nav__button md-logo" aria-label="Spring RTS Wiki" data-md-component="logo">
+      
+  <img src="../../Assets/spring-logo-header-small.png" alt="Spring RTS Wiki">
+
+    </a>
+    Spring RTS Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  首页
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Game/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  游戏
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Develop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  开发
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  API 参考
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  API 参考
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Spring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Spring
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  gl
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../COBSCALE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  COBSCALE
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SYNCED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SYNCED
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Encoding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Encoding
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Engine
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Game/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Game
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Platform
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Script/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Script
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VFS
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VFS
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#VFS" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VFS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Overview
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Paths
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#engine-read-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Engine read files
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetMaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetMaps
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetGames" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetGames
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetAllArchives" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetAllArchives
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.HasArchive" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.HasArchive
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetLoadedArchives" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetLoadedArchives
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetArchivePath" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetArchivePath
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetArchiveInfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetArchiveInfo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetArchiveDependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetArchiveDependencies
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetArchiveReplaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetArchiveReplaces
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetArchiveChecksum" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetArchiveChecksum
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetNameFromRapidTag" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetNameFromRapidTag
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetAvailableAIs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetAvailableAIs
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.Include" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.Include
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.LoadFile" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.LoadFile
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.FileExists" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.FileExists
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.DirList" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.DirList
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.SubDirs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.SubDirs
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetFileAbsolutePath" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetFileAbsolutePath
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetArchiveContainingFile" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetArchiveContainingFile
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.UseArchive" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.UseArchive
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.CompressFolder" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.CompressFolder
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.ZlibCompress" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.ZlibCompress
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.ZlibDecompress" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.ZlibDecompress
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.CalculateHash" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.CalculateHash
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackU8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackU8
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackU8-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackU8 (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackU16" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackU16
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackU16-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackU16 (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackU32" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackU32
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackU32-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackU32 (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackS8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackS8
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackS8-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackS8 (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackS16" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackS16
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackS16-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackS16 (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackS32" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackS32
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackS32-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackS32 (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackF32" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackF32
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackF32-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackF32 (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.UnpackU8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.UnpackU8
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.UnpackU16" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.UnpackU16
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.UnpackU32" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.UnpackU32
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.UnpackS8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.UnpackS8
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.UnpackS16" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.UnpackS16
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.UnpackS32" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.UnpackS32
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.UnpackF32" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.UnpackF32
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.DownloadArchive" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.DownloadArchive
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.AbortDownload" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.AbortDownload
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.ScanAllDirs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.ScanAllDirs
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tracy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  tracy
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_14" id="__nav_4_14_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Classes
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_14_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_14">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Classes
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Callins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Callins
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SyncedCallins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SyncedCallins
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UnsyncedCallins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  UnsyncedCallins
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AIInfo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  AIInfo
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ActiveUniform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ActiveUniform
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ArchiveInfo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ArchiveInfo
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AtmosphereParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  AtmosphereParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CallAsTeamOptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CallAsTeamOptions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CameraState/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CameraState
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CameraVectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CameraVectors
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CollisionVolumeData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CollisionVolumeData
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Command/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Command
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CommandDescription/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CommandDescription
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CommandOptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CommandOptions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Configuration
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ControlPoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ControlPoint
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CreateCommand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CreateCommand
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CreateRBOData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CreateRBOData
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ExplosionParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ExplosionParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FBO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  FBO
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FBODescription/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  FBODescription
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FeatureSupport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  FeatureSupport
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GenericMoveType/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GenericMoveType
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GroundMoveType/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GroundMoveType
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HoverAirMoveType/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  HoverAirMoveType
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IconData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  IconData
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Intro
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KeyBinding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  KeyBinding
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KeyModifiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  KeyModifiers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LightParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  LightParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LuaFont/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  LuaFont
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MapRenderingParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  MapRenderingParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Material/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Material
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Matrix4x4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Matrix4x4
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Menu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Menu
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MoveCtrl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  MoveCtrl
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ObjectRenderingTable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ObjectRenderingTable
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PieceInfo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  PieceInfo
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plane/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Plane
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PlatformVideoMode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  PlatformVideoMode
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ProjectileParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ProjectileParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RBO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RBO
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ResourceCost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ResourceCost
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.Context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.Context
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.Document/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.Document
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.Element/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.Element
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementForm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementForm
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementFormControl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementFormControl
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementFormControlInput/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementFormControlInput
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementFormControlSelect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementFormControlSelect
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementFormControlTextArea/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementFormControlTextArea
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementProgress/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementProgress
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementPtr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementPtr
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementTabSet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementTabSet
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementText/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementText
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.Event/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.Event
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.EventListener/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.EventListener
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.EventParametersProxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.EventParametersProxy
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.SolLuaDataModel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.SolLuaDataModel
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.Vector2f/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.Vector2f
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.Vector2i/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.Vector2i
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Roster/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Roster
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RulesParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RulesParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RulesSyncedCallins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RulesSyncedCallins
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RulesUnsyncedCallins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RulesUnsyncedCallins
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SaveImageOptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SaveImageOptions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SetUnitHealthAmounts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SetUnitHealthAmounts
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ShaderParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ShaderParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SideSpec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SideSpec
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SoundDeviceSpec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SoundDeviceSpec
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../StrafeAirMoveType/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  StrafeAirMoveType
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SunLightingParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SunLightingParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TeamStats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  TeamStats
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TexCoords/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  TexCoords
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TextColorCode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  TextColorCode
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Texture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Texture
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TextureInfo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  TextureInfo
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  UI
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UniformParam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  UniformParam
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UnitDefDimensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  UnitDefDimensions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UnitScriptTable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  UnitScriptTable
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UnitState/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  UnitState
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VAO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VAO
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VBO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VBO
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VBOAttributeDef/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VBOAttributeDef
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VertexData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VertexData
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WaterParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  WaterParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WeaponDamages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  WeaponDamages
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WeaponState/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  WeaponState
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../losAccess/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  losAccess
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rgb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  rgb
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rgba/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  rgba
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  xy
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xyz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  xyz
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xyzw/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  xyzw
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  xz
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_15" id="__nav_4_15_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Enums
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_15_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_15">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Enums
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GL-enum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GL
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CMD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CMD
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CMDTYPE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CMDTYPE
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../COB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  COB
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  LOG
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LosMask/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  LosMask
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ProjectileTargetType/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ProjectileTargetType
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../READY_MESSAGE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  READY_MESSAGE
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../READY_STATE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  READY_STATE
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.RmlEventPhase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.RmlEventPhase
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.RmlFocusFlag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.RmlFocusFlag
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.RmlModalFlag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.RmlModalFlag
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.default_action_phase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.default_action_phase
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.font_weight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.font_weight
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.key_identifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.key_identifier
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.key_modifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.key_modifier
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SFX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SFX
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aliases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Aliases
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Hosting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  托管
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Link/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  链接
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  日志
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../About/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  关于
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#VFS" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VFS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Overview
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Paths
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#engine-read-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Engine read files
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetMaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetMaps
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetGames" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetGames
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetAllArchives" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetAllArchives
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.HasArchive" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.HasArchive
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetLoadedArchives" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetLoadedArchives
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetArchivePath" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetArchivePath
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetArchiveInfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetArchiveInfo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetArchiveDependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetArchiveDependencies
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetArchiveReplaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetArchiveReplaces
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetArchiveChecksum" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetArchiveChecksum
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetNameFromRapidTag" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetNameFromRapidTag
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetAvailableAIs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetAvailableAIs
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.Include" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.Include
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.LoadFile" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.LoadFile
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.FileExists" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.FileExists
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.DirList" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.DirList
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.SubDirs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.SubDirs
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetFileAbsolutePath" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetFileAbsolutePath
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.GetArchiveContainingFile" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.GetArchiveContainingFile
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.UseArchive" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.UseArchive
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.CompressFolder" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.CompressFolder
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.ZlibCompress" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.ZlibCompress
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.ZlibDecompress" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.ZlibDecompress
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.CalculateHash" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.CalculateHash
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackU8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackU8
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackU8-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackU8 (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackU16" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackU16
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackU16-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackU16 (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackU32" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackU32
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackU32-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackU32 (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackS8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackS8
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackS8-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackS8 (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackS16" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackS16
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackS16-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackS16 (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackS32" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackS32
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackS32-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackS32 (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackF32" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackF32
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.PackF32-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.PackF32 (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.UnpackU8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.UnpackU8
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.UnpackU16" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.UnpackU16
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.UnpackU32" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.UnpackU32
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.UnpackS8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.UnpackS8
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.UnpackS16" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.UnpackS16
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.UnpackS32" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.UnpackS32
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.UnpackF32" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.UnpackF32
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.DownloadArchive" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.DownloadArchive
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.AbortDownload" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.AbortDownload
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VFS.ScanAllDirs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VFS.ScanAllDirs
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="导航栏" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    API 参考
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+  <h1>VFS</h1>
+
+<h2 id="VFS">VFS<a class="headerlink" href="#VFS" title="Permanent link">&para;</a></h2>
+<p><em>table</em></p>
+<p>Unified IO for archive and filesystem</p>
+<p>The Virtual File System is a unified layer to access (read-only) the
+different archives used at runtime. So you can access map, game &amp; config
+files via the same interface.</p>
+<h4 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h4>
+<p>Although Spring can access the filesystem directly (via os module) it is
+more common that you would want to access files included with your game or
+Spring. Trouble is, most of these files are compressed into archives
+(<code>.sdz</code>/<code>.sd7</code>) so random access would generally be a difficult procedure.
+Fortunately, the Spring Lua system automatically provides access to mod and
+base files via the VFS module.</p>
+<p>As an additional caveat, synced Lua cannot use the <code>os</code> and <code>io</code> modules,
+so using VFS is mandatory there to have any file access at all.</p>
+<p>The VFS module doesn't simply open archives though. What it does is map
+your game files, game dependencies and Spring content onto a virtual file
+tree. All archives start from the 'roots' of the tree and share the same
+virtual space, meaning that if two or more archives contain the same
+resource file name the resources overlap and only one of the files will be
+retrieved. Overlapping directories on the other hand are merged so the
+resulting virtual directory contains the contents of both. Here is an
+example of how this works:</p>
+<p><strong>Archive 1</strong> (<code>games/mygame.sd7</code>)</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>textures
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└── texture1.png
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>models
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>└── model1.mdl
+</span></code></pre></div>
+<p><strong>Archive 2</strong> (<code>base/springcontent.sdz</code>)</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>textures
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── texture1.png
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├── texture2.png
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>└── texture3.png
+</span></code></pre></div>
+<p><strong>VFS</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>textures
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── texture1.png
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├── texture2.png
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>└── texture3.png
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>models
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>└── model1.mdl
+</span></code></pre></div>
+<p>This raises the question: If both archives have a <code>texture1.png</code> then which
+<code>texture1.png</code> is retreived via the VFS? The answer depends on the order the
+archives are loaded and the VFS mode (more on modes below). Generally
+however, each archive loaded overrides any archives loaded before it. The
+standard order of loading (from first to last) is:</p>
+<ol>
+<li>The automatic dependencies <code>springcontent.sdz</code> and <code>maphelper.sdz</code>.</li>
+<li>Dependencies listed in your <code>modinfo.lua</code> (or <code>modinfo.tdf</code>), in the order listed.
+Note that they are loaded fully and recursively, i.e. all the deeper dependencies of the 1<sup>st</sup> base-level dependency are
+loaded before the 2<sup>nd</sup> base-level dependency. This breaks the usual "loaded later overrides loaded earlier" priority if
+a dependency comes from multiple places, since only the first time an archive is loaded counts.</li>
+<li>Your mod archive.</li>
+</ol>
+<p>Loose files (not within any archive) in the engine dir are also visible
+as if under the VFS root if loading under the <a href="../VFS/#VFS.RAW">VFS.RAW</a> mode, though you
+can also use full FS path (i.e. <code>C:/.../Spring/foo/bar.txt</code> is visible
+both as that and as just <code>foo/bar.txt</code>). Note that <a href="../VFS/#VFS.RAW">VFS.RAW</a> is only
+accessible to unsynced Lua, all synced states are limited to loaded archives.</p>
+<h4 id="paths">Paths<a class="headerlink" href="#paths" title="Permanent link">&para;</a></h4>
+<p>Spring's VFS is <strong>lowercase only</strong>. Also it is <strong>strongly</strong> recommended to
+use linux style path separators, e.g. <code>"foo/bar.txt"</code> and not <code>"foo\bar.txt"</code>.</p>
+<h4 id="engine-read-files">Engine read files<a class="headerlink" href="#engine-read-files" title="Permanent link">&para;</a></h4>
+<p>The engine access a few files directly, most of them are lua files which
+access other files themselves. Here the list of files that must exist in the
+VFS (some of them don't have to be in the game/map archive cause there are
+fallback solutions in <code>springcontent.sdz</code> &amp; <code>maphelper.sdz</code>):</p>
+<ul>
+<li><code>./</code></li>
+<li>anims/</li>
+<li><code>cursornormal.bmp/png</code></li>
+<li>gamedata/</li>
+<li><code>defs.lua</code></li>
+<li><code>explosions.lua</code></li>
+<li><code>explosion_alias.lua</code></li>
+<li><code>icontypes.lua</code></li>
+<li><code>messages.lua</code></li>
+<li><code>modrules.lua</code></li>
+<li><code>resources.lua</code></li>
+<li><code>resources_map.lua</code></li>
+<li><code>sidedata.lua</code></li>
+<li><code>sounds.lua</code></li>
+<li><code>luagaia/</code></li>
+<li><code>main.lua</code></li>
+<li><code>draw.lua</code></li>
+<li><code>luarules/</code></li>
+<li><code>main.lua</code></li>
+<li><code>draw.lua</code></li>
+<li><code>luaui/</code></li>
+<li><code>main.lua</code></li>
+<li><code>shaders/</code></li>
+<li><code>?</code></li>
+<li><code>luaai.lua</code></li>
+<li><code>mapinfo.lua</code></li>
+<li><code>mapoptions.lua</code></li>
+<li><code>modinfo.lua</code></li>
+<li><code>modoptions.lua</code></li>
+<li><code>validmaps.lua</code></li>
+</ul>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L27-L146" target="_blank">source</a>]</p>
+<p><strong>Members</strong></p>
+<h3 id="VFS.GetMaps">VFS.GetMaps<a class="headerlink" href="#VFS.GetMaps" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaArchive.cpp#L52-L55" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">GetMaps</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="p">[]</span>
+</span></code></pre></div>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>mapNames</code> <code>string[]</code></li>
+</ul>
+<h3 id="VFS.GetGames">VFS.GetGames<a class="headerlink" href="#VFS.GetGames" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaArchive.cpp#L63-L66" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">GetGames</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="p">[]</span>
+</span></code></pre></div>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>gameNames</code> <code>string[]</code></li>
+</ul>
+<h3 id="VFS.GetAllArchives">VFS.GetAllArchives<a class="headerlink" href="#VFS.GetAllArchives" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaArchive.cpp#L82-L85" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">GetAllArchives</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="p">[]</span>
+</span></code></pre></div>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>archiveNames</code> <code>string[]</code></li>
+</ul>
+<h3 id="VFS.HasArchive">VFS.HasArchive<a class="headerlink" href="#VFS.HasArchive" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaArchive.cpp#L101-L104" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">HasArchive</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">boolean</span>
+</span></code></pre></div>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>hasArchive</code> <code>boolean</code></li>
+</ul>
+<h3 id="VFS.GetLoadedArchives">VFS.GetLoadedArchives<a class="headerlink" href="#VFS.GetLoadedArchives" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaArchive.cpp#L115-L118" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">GetLoadedArchives</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="p">[]</span>
+</span></code></pre></div>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>archiveNames</code> <code>string[]</code></li>
+</ul>
+<h3 id="VFS.GetArchivePath">VFS.GetArchivePath<a class="headerlink" href="#VFS.GetArchivePath" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaArchive.cpp#L129-L133" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">GetArchivePath</span><span class="p">(</span><span class="nv">string</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>archiveName</code> <code>string</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>archivePath</code> <code>string?</code></li>
+</ul>
+<h3 id="VFS.GetArchiveInfo">VFS.GetArchiveInfo<a class="headerlink" href="#VFS.GetArchiveInfo" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaArchive.cpp#L170-L174" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">GetArchiveInfo</span><span class="p">(</span><span class="nv">string</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">ArchiveInfo</span><span class="err">?</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>archiveName</code> <code>string</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>archiveInfo</code> <code>ArchiveInfo?</code></li>
+</ul>
+<h3 id="VFS.GetArchiveDependencies">VFS.GetArchiveDependencies<a class="headerlink" href="#VFS.GetArchiveDependencies" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaArchive.cpp#L215-L219" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">GetArchiveDependencies</span><span class="p">(</span><span class="nv">string</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="p">[]</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>archiveName</code> <code>string</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>archiveNames</code> <code>string[]</code></li>
+</ul>
+<h3 id="VFS.GetArchiveReplaces">VFS.GetArchiveReplaces<a class="headerlink" href="#VFS.GetArchiveReplaces" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaArchive.cpp#L233-L237" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">GetArchiveReplaces</span><span class="p">(</span><span class="nv">string</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="p">[]</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>archiveName</code> <code>string</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>archiveNames</code> <code>string[]</code></li>
+</ul>
+<h3 id="VFS.GetArchiveChecksum">VFS.GetArchiveChecksum<a class="headerlink" href="#VFS.GetArchiveChecksum" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaArchive.cpp#L255-L260" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">GetArchiveChecksum</span><span class="p">(</span><span class="nv">string</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">string</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>archiveName</code> <code>string</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>singleArchiveChecksum</code> <code>string</code></li>
+<li><code>completeArchiveChecksum</code> <code>string</code></li>
+</ul>
+<h3 id="VFS.GetNameFromRapidTag">VFS.GetNameFromRapidTag<a class="headerlink" href="#VFS.GetNameFromRapidTag" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaArchive.cpp#L280-L284" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">GetNameFromRapidTag</span><span class="p">(</span><span class="nv">string</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>rapidTag</code> <code>string</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>archiveName</code> <code>string</code></li>
+</ul>
+<h3 id="VFS.GetAvailableAIs">VFS.GetAvailableAIs<a class="headerlink" href="#VFS.GetAvailableAIs" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Get a list of all Spring AIs.</p>
+<p>The optional gameName and mapName parameters can be used to include game/map
+specific LuaAIs in the list.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaArchive.cpp#L308-L317" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">GetAvailableAIs</span><span class="p">(</span><span class="nv">string</span><span class="err">?</span><span class="p">,</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">AIInfo</span><span class="p">[]</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>gameArchiveName</code> <code>string?</code></li>
+<li><code>mapArichiveName</code> <code>string?</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>ais</code> <code>AIInfo[]</code></li>
+</ul>
+<h3 id="VFS.Include">VFS.Include<a class="headerlink" href="#VFS.Include" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Loads and runs lua code from a file in the VFS.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L277-L311" target="_blank">source</a>]</p>
+<p>The path is relative to the main Spring directory, e.g.</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">Include</span><span class="p">(</span><span class="s1">'LuaUI/includes/filename.lua'</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nv">vfsmode</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">Include</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">table</span><span class="err">?</span><span class="p">,</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">any</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>filename</code> <code>string</code></li>
+<li><code>environment</code> <code>table?</code> — (Default: the current function environment)</li>
+</ul>
+<p>The environment arg sets the global environment (see generic lua refs). In
+almost all cases, this should be left <code>nil</code> to preserve the current env.</p>
+<p>If the provided, any non-local variables and functions defined in
+<code>filename.lua</code> are then accessable via env. Vise-versa, any variables
+defined in env prior to passing to <a href="../VFS/#VFS.Include">VFS.Include</a> are available to code in the
+included file. Code running in <code>filename.lua</code> will see the contents of env in
+place of the normal global environment.
+- <code>mode</code> <code>string?</code></p>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>module</code> <code>any</code> — The return value of the included file.</li>
+</ul>
+<h3 id="VFS.LoadFile">VFS.LoadFile<a class="headerlink" href="#VFS.LoadFile" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Load raw text data from the VFS.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L395-L415" target="_blank">source</a>]</p>
+<p>Returns file contents as a string. Unlike <a href="../VFS/#VFS.Include">VFS.Include</a> the file will not be
+executed. This lets you pre-process the code. Use <code>loadstring</code> afterwards.</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">LoadFile</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>filename</code> <code>string</code></li>
+<li><code>mode</code> <code>string?</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>data</code> <code>string?</code> — The contents of the file.</li>
+</ul>
+<h3 id="VFS.FileExists">VFS.FileExists<a class="headerlink" href="#VFS.FileExists" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Check if file exists in VFS.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L446-L471" target="_blank">source</a>]</p>
+<p>Example usage:</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kr">if</span><span class="w"> </span><span class="nv">VFS</span><span class="p">.</span><span class="nf">FileExists</span><span class="p">(</span><span class="s2">"mapconfig/custom_lava_config.lua"</span><span class="p">,</span><span class="w"> </span><span class="nv">VFS</span><span class="p">.</span><span class="py">MAP</span><span class="p">)</span><span class="w"> </span><span class="kr">then</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span><span class="o">#</span><span class="w"> </span><span class="p">...</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="kr">end</span>
+</span></code></pre></div>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">FileExists</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">boolean</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>filename</code> <code>string</code></li>
+<li><code>mode</code> <code>string?</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>exists</code> <code>boolean</code> — <code>true</code> if the file exists, otherwise <code>false</code>.</li>
+</ul>
+<h3 id="VFS.DirList">VFS.DirList<a class="headerlink" href="#VFS.DirList" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>List files in a directory.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L492-L519" target="_blank">source</a>]</p>
+<p>Example usage:</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">luaFiles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">VFS</span><span class="p">.</span><span class="nf">DirList</span><span class="p">(</span><span class="s1">'units/'</span><span class="p">,</span><span class="w"> </span><span class="s1">'*.lua'</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">DirList</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span><span class="p">,</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span><span class="p">,</span><span class="w"> </span><span class="nv">boolean</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="p">[]</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>directory</code> <code>string</code></li>
+<li><code>pattern</code> <code>string?</code> — (Default: <code>"*"</code>)</li>
+<li><code>mode</code> <code>string?</code></li>
+<li><code>recursive</code> <code>boolean?</code> — (Default: <code>false</code>)</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>filenames</code> <code>string[]</code></li>
+</ul>
+<h3 id="VFS.SubDirs">VFS.SubDirs<a class="headerlink" href="#VFS.SubDirs" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>List sub-directories in a directory.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L551-L581" target="_blank">source</a>]</p>
+<p>Example usage:</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">VFS</span><span class="p">.</span><span class="nf">SubDirs</span><span class="p">(</span><span class="s1">'sounds/voice/'</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="nv">language</span><span class="p">,</span><span class="w"> </span><span class="s1">'*'</span><span class="p">)</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">file</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">files</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="o">#</span><span class="w"> </span><span class="p">...</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="kr">end</span>
+</span></code></pre></div>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">SubDirs</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span><span class="p">,</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span><span class="p">,</span><span class="w"> </span><span class="nv">boolean</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="p">[]</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>directory</code> <code>string</code></li>
+<li><code>pattern</code> <code>string?</code> — (Default: <code>"*"</code>)</li>
+<li><code>mode</code> <code>string?</code></li>
+<li><code>recursive</code> <code>boolean?</code> — (Default: <code>false</code>)</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>dirnames</code> <code>string[]</code></li>
+</ul>
+<h3 id="VFS.GetFileAbsolutePath">VFS.GetFileAbsolutePath<a class="headerlink" href="#VFS.GetFileAbsolutePath" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L609-L624" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">GetFileAbsolutePath</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>filename</code> <code>string</code></li>
+<li><code>mode</code> <code>string?</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>absolutePath</code> <code>string?</code></li>
+</ul>
+<h3 id="VFS.GetArchiveContainingFile">VFS.GetArchiveContainingFile<a class="headerlink" href="#VFS.GetArchiveContainingFile" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L648-L663" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">GetArchiveContainingFile</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>filename</code> <code>string</code></li>
+<li><code>mode</code> <code>string?</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>archiveName</code> <code>string?</code></li>
+</ul>
+<h3 id="VFS.UseArchive">VFS.UseArchive<a class="headerlink" href="#VFS.UseArchive" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Temporarily load an archive from the VFS and run the given function,
+which can make usage of the files in the archive.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L688-L696" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">UseArchive</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">unknown</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">any</span><span class="w"> </span><span class="o">..</span><span class="p">.</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>archiveName</code> <code>string</code></li>
+<li><code>fun</code> <code>unknown</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>Results</code> <code>any ...</code> — of the given function</li>
+</ul>
+<h3 id="VFS.CompressFolder">VFS.CompressFolder<a class="headerlink" href="#VFS.CompressFolder" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Compresses the specified folder.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L816-L826" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">CompressFolder</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span><span class="p">,</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span><span class="p">,</span><span class="w"> </span><span class="nv">boolean</span><span class="err">?</span><span class="p">,</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>folderPath</code> <code>string</code></li>
+<li><code>archiveType</code> <code>string?</code> — (Default: <code>"zip"</code>)The compression type (can
+currently be only <code>"zip"</code>).</li>
+<li><code>compressedFilePath</code> <code>string?</code> — (Default: <code>folderPath .. ".sdz"</code>)</li>
+<li><code>includeFolder</code> <code>boolean?</code> — (Default: <code>false</code>) Whether the archive should
+have the specified folder as root.</li>
+<li><code>mode</code> <code>string?</code></li>
+</ul>
+<h3 id="VFS.ZlibCompress">VFS.ZlibCompress<a class="headerlink" href="#VFS.ZlibCompress" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L862-L866" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">ZlibCompress</span><span class="p">(</span><span class="nv">string</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>uncompressed</code> <code>string</code> — Data to compress.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>compressed</code> <code>string?</code> — Compressed data, or <code>nil</code> on error.</li>
+</ul>
+<h3 id="VFS.ZlibDecompress">VFS.ZlibDecompress<a class="headerlink" href="#VFS.ZlibDecompress" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L882-L886" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">ZlibDecompress</span><span class="p">(</span><span class="nv">string</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>compressed</code> <code>string</code> — Data to decompress.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>uncompressed</code> <code>string?</code> — Uncompressed data, or <code>nil</code> on error.</li>
+</ul>
+<h3 id="VFS.CalculateHash">VFS.CalculateHash<a class="headerlink" href="#VFS.CalculateHash" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Calculates hash of a given string.</p>
+<ul>
+<li>MD5 gets base64 encoded.</li>
+<li>SHA512 gets hex encoded.</li>
+</ul>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L909-L919" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">CalculateHash</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">HashType</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>input</code> <code>string</code></li>
+<li><code>hashType</code> <a href="../Aliases/#HashType"><code>HashType</code></a> — Hash type.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>hash</code> <code>string?</code></li>
+</ul>
+<h3 id="VFS.PackU8">VFS.PackU8<a class="headerlink" href="#VFS.PackU8" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert unsigned 8-bit integer(s) to binary string.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1001-L1006" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">PackU8</span><span class="p">([</span><span class="nv">integer</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>...</code> <code>integer</code> — Numbers to pack.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>string</code></li>
+</ul>
+<h3 id="VFS.PackU8-1">VFS.PackU8 (overload 1)<a class="headerlink" href="#VFS.PackU8-1" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert unsigned 8-bit integer(s) to binary string.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1007-L1012" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">PackU8</span><span class="p">(</span><span class="nv">integer</span><span class="p">[])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>numbers</code> <code>integer[]</code> — Numbers to pack.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>string</code></li>
+</ul>
+<h3 id="VFS.PackU16">VFS.PackU16<a class="headerlink" href="#VFS.PackU16" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert unsigned 16-bit integer(s) to binary string.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1015-L1020" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">PackU16</span><span class="p">([</span><span class="nv">integer</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>...</code> <code>integer</code> — Numbers to pack.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>string</code></li>
+</ul>
+<h3 id="VFS.PackU16-1">VFS.PackU16 (overload 1)<a class="headerlink" href="#VFS.PackU16-1" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert unsigned 16-bit integer(s) to binary string.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1021-L1026" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">PackU16</span><span class="p">(</span><span class="nv">integer</span><span class="p">[])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>numbers</code> <code>integer[]</code> — Numbers to pack.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>string</code></li>
+</ul>
+<h3 id="VFS.PackU32">VFS.PackU32<a class="headerlink" href="#VFS.PackU32" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert unsigned 32-bit integer(s) to binary string.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1029-L1034" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">PackU32</span><span class="p">([</span><span class="nv">integer</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>...</code> <code>integer</code> — Numbers to pack.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>string</code></li>
+</ul>
+<h3 id="VFS.PackU32-1">VFS.PackU32 (overload 1)<a class="headerlink" href="#VFS.PackU32-1" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert unsigned 32-bit integer(s) to binary string.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1035-L1040" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">PackU32</span><span class="p">(</span><span class="nv">integer</span><span class="p">[])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>numbers</code> <code>integer[]</code> — Numbers to pack.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>string</code></li>
+</ul>
+<h3 id="VFS.PackS8">VFS.PackS8<a class="headerlink" href="#VFS.PackS8" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert signed 8-bit integer(s) to binary string.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1043-L1048" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">PackS8</span><span class="p">([</span><span class="nv">integer</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>...</code> <code>integer</code> — Numbers to pack.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>string</code></li>
+</ul>
+<h3 id="VFS.PackS8-1">VFS.PackS8 (overload 1)<a class="headerlink" href="#VFS.PackS8-1" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert signed 8-bit integer(s) to binary string.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1049-L1054" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">PackS8</span><span class="p">(</span><span class="nv">integer</span><span class="p">[])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>numbers</code> <code>integer[]</code> — Numbers to pack.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>string</code></li>
+</ul>
+<h3 id="VFS.PackS16">VFS.PackS16<a class="headerlink" href="#VFS.PackS16" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert signed 16-bit integer(s) to binary string.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1057-L1062" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">PackS16</span><span class="p">([</span><span class="nv">integer</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>...</code> <code>integer</code> — Numbers to pack.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>string</code></li>
+</ul>
+<h3 id="VFS.PackS16-1">VFS.PackS16 (overload 1)<a class="headerlink" href="#VFS.PackS16-1" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert signed 16-bit integer(s) to binary string.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1063-L1068" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">PackS16</span><span class="p">(</span><span class="nv">integer</span><span class="p">[])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>numbers</code> <code>integer[]</code> — Numbers to pack.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>string</code></li>
+</ul>
+<h3 id="VFS.PackS32">VFS.PackS32<a class="headerlink" href="#VFS.PackS32" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert signed 32-bit integer(s) to binary string.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1071-L1076" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">PackS32</span><span class="p">([</span><span class="nv">integer</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>...</code> <code>integer</code> — Numbers to pack.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>string</code></li>
+</ul>
+<h3 id="VFS.PackS32-1">VFS.PackS32 (overload 1)<a class="headerlink" href="#VFS.PackS32-1" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert signed 32-bit integer(s) to binary string.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1077-L1082" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">PackS32</span><span class="p">(</span><span class="nv">integer</span><span class="p">[])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>numbers</code> <code>integer[]</code> — Numbers to pack.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>string</code></li>
+</ul>
+<h3 id="VFS.PackF32">VFS.PackF32<a class="headerlink" href="#VFS.PackF32" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert signed 32-bit float(s) to binary string.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1085-L1090" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">PackF32</span><span class="p">([</span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>...</code> <code>number</code> — Numbers to pack.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>string?</code></li>
+</ul>
+<h3 id="VFS.PackF32-1">VFS.PackF32 (overload 1)<a class="headerlink" href="#VFS.PackF32-1" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert signed 32-bit float(s) to binary string.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1091-L1096" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">PackF32</span><span class="p">(</span><span class="nv">number</span><span class="p">[])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">string</span><span class="err">?</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>numbers</code> <code>number[]</code> — Numbers to pack.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>string?</code></li>
+</ul>
+<h3 id="VFS.UnpackU8">VFS.UnpackU8<a class="headerlink" href="#VFS.UnpackU8" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert a binary string to an unsigned 8-bit integer.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1144-L1150" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">UnpackU8</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">integer</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>str</code> <code>string</code> — Binary string.</li>
+<li><code>pos</code> <code>integer?</code> — Byte offset.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>integer</code></li>
+</ul>
+<h3 id="VFS.UnpackU16">VFS.UnpackU16<a class="headerlink" href="#VFS.UnpackU16" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert a binary string to an unsigned 16-bit integer.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1153-L1159" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">UnpackU16</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">integer</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>str</code> <code>string</code> — Binary string.</li>
+<li><code>pos</code> <code>integer?</code> — Byte offset.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>integer</code></li>
+</ul>
+<h3 id="VFS.UnpackU32">VFS.UnpackU32<a class="headerlink" href="#VFS.UnpackU32" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert a binary string to an unsigned 32-bit integer.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1162-L1168" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">UnpackU32</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">integer</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>str</code> <code>string</code> — Binary string.</li>
+<li><code>pos</code> <code>integer?</code> — Byte offset.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>integer</code></li>
+</ul>
+<h3 id="VFS.UnpackS8">VFS.UnpackS8<a class="headerlink" href="#VFS.UnpackS8" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert a binary string to a signed 8-bit integer.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1171-L1177" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">UnpackS8</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">integer</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>str</code> <code>string</code> — Binary string.</li>
+<li><code>pos</code> <code>integer?</code> — Byte offset.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>integer</code></li>
+</ul>
+<h3 id="VFS.UnpackS16">VFS.UnpackS16<a class="headerlink" href="#VFS.UnpackS16" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert a binary string to a signed 16-bit integer.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1180-L1186" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">UnpackS16</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">integer</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>str</code> <code>string</code> — Binary string.</li>
+<li><code>pos</code> <code>integer?</code> — Byte offset.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>integer</code></li>
+</ul>
+<h3 id="VFS.UnpackS32">VFS.UnpackS32<a class="headerlink" href="#VFS.UnpackS32" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert a binary string to a signed 32-bit integer.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1189-L1195" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">UnpackS32</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">integer</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>str</code> <code>string</code> — Binary string.</li>
+<li><code>pos</code> <code>integer?</code> — Byte offset.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>integer</code></li>
+</ul>
+<h3 id="VFS.UnpackF32">VFS.UnpackF32<a class="headerlink" href="#VFS.UnpackF32" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Convert a binary string to a signed 32-bit float.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L1198-L1204" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">UnpackF32</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">integer</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>str</code> <code>string</code> — Binary string.</li>
+<li><code>pos</code> <code>integer?</code> — Byte offset.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>integer</code></li>
+</ul>
+<h3 id="VFS.DownloadArchive">VFS.DownloadArchive<a class="headerlink" href="#VFS.DownloadArchive" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Queue an archive download through pr-downloader.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFSDownload.cpp#L315-L320" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">DownloadArchive</span><span class="p">(</span><span class="nv">string</span><span class="p">,</span><span class="w"> </span><span class="nv">string</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>filename</code> <code>string</code> — Archive or rapid package name.</li>
+<li><code>category</code> <code>string</code> — One of <code>map</code>, <code>game</code>, or <code>engine</code>.</li>
+</ul>
+<h3 id="VFS.AbortDownload">VFS.AbortDownload<a class="headerlink" href="#VFS.AbortDownload" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Abort a queued or active archive download.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFSDownload.cpp#L346-L351" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">AbortDownload</span><span class="p">(</span><span class="nv">integer</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">boolean</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>id</code> <code>integer</code> — Download queue identifier.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>removed</code> <code>boolean</code> — Whether a matching queued or active download was removed.</li>
+</ul>
+<h3 id="VFS.ScanAllDirs">VFS.ScanAllDirs<a class="headerlink" href="#VFS.ScanAllDirs" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>Rescan all data directories for newly added archives.</p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFSDownload.cpp#L358-L361" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="nv">VFS</span><span class="p">.</span><span class="nf">ScanAllDirs</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Fields</strong></p>
+<ul>
+<li><span id="VFS.RAW"></span> <code>VFS.RAW</code> "r" — [<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L151-L151" target="_blank">source</a>]
+Only select uncompressed files.</li>
+<li><span id="VFS.GAME"></span> <code>VFS.GAME</code> "M" — [<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L153-L153" target="_blank">source</a>]</li>
+<li><span id="VFS.MAP"></span> <code>VFS.MAP</code> "m" — [<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L155-L155" target="_blank">source</a>]</li>
+<li><span id="VFS.BASE"></span> <code>VFS.BASE</code> "b" — [<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L157-L157" target="_blank">source</a>]</li>
+<li><span id="VFS.MENU"></span> <code>VFS.MENU</code> "e" — [<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L159-L159" target="_blank">source</a>]</li>
+<li><span id="VFS.ZIP"></span> <code>VFS.ZIP</code> "Mmeb" — [<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L161-L161" target="_blank">source</a>]
+Only select compressed files (<code>.sdz</code>, <code>.sd7</code>).</li>
+<li><span id="VFS.RAW_FIRST"></span> <code>VFS.RAW_FIRST</code> "rMmeb" — [<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L163-L163" target="_blank">source</a>]
+Try uncompressed files first, then compressed.</li>
+<li><span id="VFS.ZIP_FIRST"></span> <code>VFS.ZIP_FIRST</code> "Mmebr" — [<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L165-L165" target="_blank">source</a>]
+Try compressed files first, then uncompressed.</li>
+<li><span id="VFS.MOD"></span> <code>VFS.MOD</code> "M" — [<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L168-L171" target="_blank">source</a>]</li>
+<li><span id="VFS.RAW_ONLY"></span> <code>VFS.RAW_ONLY</code> "r" — [<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L173-L176" target="_blank">source</a>]</li>
+<li><span id="VFS.ZIP_ONLY"></span> <code>VFS.ZIP_ONLY</code> "Mmeb" — [<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaVFS.cpp#L178-L181" target="_blank">source</a>]</li>
+</ul>
+
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">Lua-API</span>
+      
+    
+  </nav>
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Script/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Script">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Script
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../tracy/" class="md-footer__link md-footer__link--next" aria-label="下一页: tracy">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                tracy
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      这里的内容来自不同的网站与文档
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      
+<div class="md-progress" data-md-component="progress" role="progressbar" aria-label="Loading"></div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.path","navigation.prune","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.suggest","search.highlight","search.share","toc.follow"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","clipboard.error":"Could not copy to clipboard","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+    
+  </body>
+</html>

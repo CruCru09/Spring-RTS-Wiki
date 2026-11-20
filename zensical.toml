@@ -1,0 +1,292 @@
+[project]
+site_url = "https://www.example.com/"
+site_name = "Spring RTS Wiki"
+site_description = "Spring RTS Wiki"
+site_author = "Cru"
+docs_dir = "docs"
+site_dir = "site"
+
+copyright = "这里的内容来自不同的网站与文档"
+
+# repo_url = "https://github.com/user/repo"
+# repo_name = "user/repo"
+# edit_uri = "edit/main/docs/"
+
+nav = [
+  { "首页" = "index.md" },
+
+  { "游戏" = "Game.md" },
+  
+  { "开发" = "Develop.md" },
+
+  { "API 参考" = [
+    { "Overview" = "lua-api/index.md" },
+    { "Spring" = "lua-api/Spring.md" },
+    { "gl" = "lua-api/gl.md" },
+    { "RmlUi" = "lua-api/RmlUi.md" },
+    { "COBSCALE" = "lua-api/COBSCALE.md" },
+    { "SYNCED" = "lua-api/SYNCED.md" },
+    { "Encoding" = "lua-api/Encoding.md" },
+    { "Engine" = "lua-api/Engine.md" },
+    { "Game" = "lua-api/Game.md" },
+    { "Platform" = "lua-api/Platform.md" },
+    { "Script" = "lua-api/Script.md" },
+    { "VFS" = "lua-api/VFS.md" },
+    { "tracy" = "lua-api/tracy.md" },
+
+    { "Classes" = [
+      { "Callins" = "lua-api/Callins.md" },
+      { "SyncedCallins" = "lua-api/SyncedCallins.md" },
+      { "UnsyncedCallins" = "lua-api/UnsyncedCallins.md" },
+      { "AIInfo" = "lua-api/AIInfo.md" },
+      { "ActiveUniform" = "lua-api/ActiveUniform.md" },
+      { "ArchiveInfo" = "lua-api/ArchiveInfo.md" },
+      { "AtmosphereParams" = "lua-api/AtmosphereParams.md" },
+      { "CallAsTeamOptions" = "lua-api/CallAsTeamOptions.md" },
+      { "CameraState" = "lua-api/CameraState.md" },
+      { "CameraVectors" = "lua-api/CameraVectors.md" },
+      { "CollisionVolumeData" = "lua-api/CollisionVolumeData.md" },
+      { "Command" = "lua-api/Command.md" },
+      { "CommandDescription" = "lua-api/CommandDescription.md" },
+      { "CommandOptions" = "lua-api/CommandOptions.md" },
+      { "Configuration" = "lua-api/Configuration.md" },
+      { "ControlPoint" = "lua-api/ControlPoint.md" },
+      { "CreateCommand" = "lua-api/CreateCommand.md" },
+      { "CreateRBOData" = "lua-api/CreateRBOData.md" },
+      { "ExplosionParams" = "lua-api/ExplosionParams.md" },
+      { "FBO" = "lua-api/FBO.md" },
+      { "FBODescription" = "lua-api/FBODescription.md" },
+      { "FeatureSupport" = "lua-api/FeatureSupport.md" },
+      { "GenericMoveType" = "lua-api/GenericMoveType.md" },
+      { "GroundMoveType" = "lua-api/GroundMoveType.md" },
+      { "HoverAirMoveType" = "lua-api/HoverAirMoveType.md" },
+      { "IconData" = "lua-api/IconData.md" },
+      { "Intro" = "lua-api/Intro.md" },
+      { "KeyBinding" = "lua-api/KeyBinding.md" },
+      { "KeyModifiers" = "lua-api/KeyModifiers.md" },
+      { "LightParams" = "lua-api/LightParams.md" },
+      { "LuaFont" = "lua-api/LuaFont.md" },
+      { "MapRenderingParams" = "lua-api/MapRenderingParams.md" },
+      { "Material" = "lua-api/Material.md" },
+      { "Matrix4x4" = "lua-api/Matrix4x4.md" },
+      { "Menu" = "lua-api/Menu.md" },
+      { "MoveCtrl" = "lua-api/MoveCtrl.md" },
+      { "ObjectRenderingTable" = "lua-api/ObjectRenderingTable.md" },
+      { "PieceInfo" = "lua-api/PieceInfo.md" },
+      { "Plane" = "lua-api/Plane.md" },
+      { "PlatformVideoMode" = "lua-api/PlatformVideoMode.md" },
+      { "ProjectileParams" = "lua-api/ProjectileParams.md" },
+      { "RBO" = "lua-api/RBO.md" },
+      { "ResourceCost" = "lua-api/ResourceCost.md" },
+      { "RmlUi.Context" = "lua-api/RmlUi.Context.md" },
+      { "RmlUi.Document" = "lua-api/RmlUi.Document.md" },
+      { "RmlUi.Element" = "lua-api/RmlUi.Element.md" },
+      { "RmlUi.ElementForm" = "lua-api/RmlUi.ElementForm.md" },
+      { "RmlUi.ElementFormControl" = "lua-api/RmlUi.ElementFormControl.md" },
+      { "RmlUi.ElementFormControlInput" = "lua-api/RmlUi.ElementFormControlInput.md" },
+      { "RmlUi.ElementFormControlSelect" = "lua-api/RmlUi.ElementFormControlSelect.md" },
+      { "RmlUi.ElementFormControlTextArea" = "lua-api/RmlUi.ElementFormControlTextArea.md" },
+      { "RmlUi.ElementProgress" = "lua-api/RmlUi.ElementProgress.md" },
+      { "RmlUi.ElementPtr" = "lua-api/RmlUi.ElementPtr.md" },
+      { "RmlUi.ElementTabSet" = "lua-api/RmlUi.ElementTabSet.md" },
+      { "RmlUi.ElementText" = "lua-api/RmlUi.ElementText.md" },
+      { "RmlUi.Event" = "lua-api/RmlUi.Event.md" },
+      { "RmlUi.EventListener" = "lua-api/RmlUi.EventListener.md" },
+      { "RmlUi.EventParametersProxy" = "lua-api/RmlUi.EventParametersProxy.md" },
+      { "RmlUi.SolLuaDataModel" = "lua-api/RmlUi.SolLuaDataModel.md" },
+      { "RmlUi.Vector2f" = "lua-api/RmlUi.Vector2f.md" },
+      { "RmlUi.Vector2i" = "lua-api/RmlUi.Vector2i.md" },
+      { "Roster" = "lua-api/Roster.md" },
+      { "RulesParams" = "lua-api/RulesParams.md" },
+      { "RulesSyncedCallins" = "lua-api/RulesSyncedCallins.md" },
+      { "RulesUnsyncedCallins" = "lua-api/RulesUnsyncedCallins.md" },
+      { "SaveImageOptions" = "lua-api/SaveImageOptions.md" },
+      { "SetUnitHealthAmounts" = "lua-api/SetUnitHealthAmounts.md" },
+      { "ShaderParams" = "lua-api/ShaderParams.md" },
+      { "SideSpec" = "lua-api/SideSpec.md" },
+      { "SoundDeviceSpec" = "lua-api/SoundDeviceSpec.md" },
+      { "StrafeAirMoveType" = "lua-api/StrafeAirMoveType.md" },
+      { "SunLightingParams" = "lua-api/SunLightingParams.md" },
+      { "TeamStats" = "lua-api/TeamStats.md" },
+      { "TexCoords" = "lua-api/TexCoords.md" },
+      { "TextColorCode" = "lua-api/TextColorCode.md" },
+      { "Texture" = "lua-api/Texture.md" },
+      { "TextureInfo" = "lua-api/TextureInfo.md" },
+      { "UI" = "lua-api/UI.md" },
+      { "UniformParam" = "lua-api/UniformParam.md" },
+      { "UnitDefDimensions" = "lua-api/UnitDefDimensions.md" },
+      { "UnitScriptTable" = "lua-api/UnitScriptTable.md" },
+      { "UnitState" = "lua-api/UnitState.md" },
+      { "VAO" = "lua-api/VAO.md" },
+      { "VBO" = "lua-api/VBO.md" },
+      { "VBOAttributeDef" = "lua-api/VBOAttributeDef.md" },
+      { "VertexData" = "lua-api/VertexData.md" },
+      { "WaterParams" = "lua-api/WaterParams.md" },
+      { "WeaponDamages" = "lua-api/WeaponDamages.md" },
+      { "WeaponState" = "lua-api/WeaponState.md" },
+      { "losAccess" = "lua-api/losAccess.md" },
+      { "rgb" = "lua-api/rgb.md" },
+      { "rgba" = "lua-api/rgba.md" },
+      { "xy" = "lua-api/xy.md" },
+      { "xyz" = "lua-api/xyz.md" },
+      { "xyzw" = "lua-api/xyzw.md" },
+      { "xz" = "lua-api/xz.md" }
+    ] },
+
+    { "Enums" = [
+      { "GL" = "lua-api/GL-enum.md" },
+      { "CMD" = "lua-api/CMD.md" },
+      { "CMDTYPE" = "lua-api/CMDTYPE.md" },
+      { "COB" = "lua-api/COB.md" },
+      { "LOG" = "lua-api/LOG.md" },
+      { "LosMask" = "lua-api/LosMask.md" },
+      { "ProjectileTargetType" = "lua-api/ProjectileTargetType.md" },
+      { "READY_MESSAGE" = "lua-api/READY_MESSAGE.md" },
+      { "READY_STATE" = "lua-api/READY_STATE.md" },
+      { "RmlUi.RmlEventPhase" = "lua-api/RmlUi.RmlEventPhase.md" },
+      { "RmlUi.RmlFocusFlag" = "lua-api/RmlUi.RmlFocusFlag.md" },
+      { "RmlUi.RmlModalFlag" = "lua-api/RmlUi.RmlModalFlag.md" },
+      { "RmlUi.default_action_phase" = "lua-api/RmlUi.default_action_phase.md" },
+      { "RmlUi.font_weight" = "lua-api/RmlUi.font_weight.md" },
+      { "RmlUi.key_identifier" = "lua-api/RmlUi.key_identifier.md" },
+      { "RmlUi.key_modifier" = "lua-api/RmlUi.key_modifier.md" },
+      { "SFX" = "lua-api/SFX.md" }
+    ] },
+
+    { "Aliases" = "lua-api/Aliases.md" }
+  ] },
+
+  { "托管" = "Hosting.md" },
+
+  { "链接" = "Link.md" },
+
+  { "日志" = "Log.md" },
+
+  { "关于" = "About.md" },
+]
+
+# extra_css = ["stylesheets/extra.css"]
+# extra_javascript = ["javascripts/extra.js"]
+
+[project.theme]
+variant = "modern"
+# custom_dir = "overrides"
+favicon = "Assets/spring-logo-header-small.png"
+language = "zh"
+features = [
+  "announce.dismiss",
+  # "content.action.edit",
+  # "content.action.view",
+  "content.code.annotate",
+  "content.code.copy",
+  # "content.code.select",
+  "content.footnote.tooltips",
+  "content.tabs.link",
+  "content.tooltips",
+  # "header.autohide",
+  "navigation.expand",
+  "navigation.footer",
+  "navigation.indexes",
+  "navigation.instant",
+  "navigation.instant.prefetch",
+  "navigation.instant.progress",
+  "navigation.path",
+  "navigation.prune",
+  "navigation.sections",
+  "navigation.tabs",
+  "navigation.tabs.sticky",
+  "navigation.top",
+  "navigation.tracking",
+  "search.suggest",
+  "search.highlight",
+  "search.share",
+  "toc.follow",
+  # "toc.integrate",
+]
+
+logo = "Assets/spring-logo-header-small.png"
+
+# [project.theme.icon]
+# logo = "lucide/smile"
+
+# [project.theme.font]
+# text = "Inter"
+# code = "Jetbrains Mono"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to system preference"
+
+# [[project.extra.social]]
+# icon = "fontawesome/brands/github"
+# link = "https://github.com/user/repo"
+
+# [[project.extra.social]]
+# icon = "fontawesome/brands/mastodon"
+# link = "https://fosstodon.org/@user"
+
+
+# -------------------------------------------------------------
+[project.markdown_extensions]
+abbr = {}
+admonition = {}
+attr_list = {}
+def_list = {}
+footnotes = {}
+md_in_html = {}
+toc.permalink = true
+pymdownx.arithmatex.generic = true
+pymdownx.betterem = {}
+pymdownx.caret = {}
+pymdownx.details = {}
+pymdownx.emoji.emoji_generator = "zensical.extensions.emoji.to_svg"
+pymdownx.emoji.emoji_index = "zensical.extensions.emoji.twemoji"
+pymdownx.highlight.anchor_linenums = true
+pymdownx.highlight.line_spans = "__span"
+pymdownx.highlight.pygments_lang_class = true
+pymdownx.inlinehilite = {}
+pymdownx.keys = {}
+pymdownx.magiclink = {}
+pymdownx.mark = {}
+pymdownx.smartsymbols = {}
+# pymdownx.snippets.base_path = "includes"
+pymdownx.superfences.custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
+pymdownx.tabbed.alternate_style = true
+pymdownx.tabbed.combine_header_slug = true
+pymdownx.tasklist.custom_checkbox = true
+pymdownx.tilde = {}
+
+
+# -------------------------------------------------------------
+
+# ---- 搜索插件 ----
+[project.plugins.search]
+separator = '[\s\u200b\-]'
+
+# ---- 文档日期插件 ----
+# 显示文档的创建和更新时间 pip install mkdocs-document-dates
+[project.plugins.document-dates]
+position = "bottom"            # 显示位置 bottom(文档末尾) top(标题后)
+type = "date"                  # 日期类型 date(日期)/datetime(日期时间)/timeago(相对时间)
+locale = "zh"                  # 本地化语言
+date_format = "%Y-%m-%d"       # 日期格式
+time_format = "%H:%M:%S"       # 时间格式
+show_author = true             # 显示作者信息
+
+# ---- 标签插件 ----
+[project.plugins.tags]

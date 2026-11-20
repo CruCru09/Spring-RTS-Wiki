@@ -1,0 +1,6330 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Spring RTS Wiki">
+      
+      
+        <meta name="author" content="Cru">
+      
+      
+        <link rel="canonical" href="https://www.example.com/lua-api/MoveCtrl/">
+      
+      
+      
+        <link rel="prev" href="../Menu/">
+      
+      
+        <link rel="next" href="../ObjectRenderingTable/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../Assets/spring-logo-header-small.png">
+      <meta name="generator" content="zensical-0.1.2">
+    
+    
+      
+        <title>MoveCtrl - Spring RTS Wiki</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        跳转至
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Spring RTS Wiki" class="md-header__button md-logo" aria-label="Spring RTS Wiki" data-md-component="logo">
+      
+  <img src="../../Assets/spring-logo-header-small.png" alt="Spring RTS Wiki">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">导航栏</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spring RTS Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MoveCtrl
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun-moon" viewBox="0 0 24 24"><path d="M12 2v2M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715M16 12a4 4 0 0 0-4-4M19 5l-1.256 1.256M20 12h2"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">查找</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="查找">
+  <button type="button" class="md-search__button">
+    查找
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Game/" class="md-tabs__link">
+        
+  
+  游戏
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Develop/" class="md-tabs__link">
+        
+  
+  开发
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  API 参考
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Hosting/" class="md-tabs__link">
+        
+  
+  托管
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Link/" class="md-tabs__link">
+        
+  
+  链接
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Log/" class="md-tabs__link">
+        
+  
+  日志
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../About/" class="md-tabs__link">
+        
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Spring RTS Wiki" class="md-nav__button md-logo" aria-label="Spring RTS Wiki" data-md-component="logo">
+      
+  <img src="../../Assets/spring-logo-header-small.png" alt="Spring RTS Wiki">
+
+    </a>
+    Spring RTS Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  首页
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Game/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  游戏
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Develop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  开发
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  API 参考
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  API 参考
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Spring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Spring
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  gl
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../COBSCALE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  COBSCALE
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SYNCED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SYNCED
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Encoding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Encoding
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Engine
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Game/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Game
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Platform
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Script/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Script
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VFS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VFS
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tracy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  tracy
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_14" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_14" id="__nav_4_14_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Classes
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_14_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_4_14">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Classes
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Callins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Callins
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SyncedCallins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SyncedCallins
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UnsyncedCallins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  UnsyncedCallins
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AIInfo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  AIInfo
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ActiveUniform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ActiveUniform
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ArchiveInfo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ArchiveInfo
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AtmosphereParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  AtmosphereParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CallAsTeamOptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CallAsTeamOptions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CameraState/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CameraState
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CameraVectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CameraVectors
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CollisionVolumeData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CollisionVolumeData
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Command/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Command
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CommandDescription/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CommandDescription
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CommandOptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CommandOptions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Configuration
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ControlPoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ControlPoint
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CreateCommand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CreateCommand
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CreateRBOData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CreateRBOData
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ExplosionParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ExplosionParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FBO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  FBO
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FBODescription/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  FBODescription
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FeatureSupport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  FeatureSupport
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GenericMoveType/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GenericMoveType
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GroundMoveType/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GroundMoveType
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HoverAirMoveType/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  HoverAirMoveType
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IconData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  IconData
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Intro
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KeyBinding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  KeyBinding
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KeyModifiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  KeyModifiers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LightParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  LightParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LuaFont/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  LuaFont
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MapRenderingParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  MapRenderingParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Material/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Material
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Matrix4x4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Matrix4x4
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Menu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Menu
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  MoveCtrl
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  MoveCtrl
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#MoveCtrl" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MoveCtrl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.IsEnabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.IsEnabled
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.Enable" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.Enable
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.Disable" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.Disable
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetTag" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetTag
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.GetTag" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.GetTag
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetProgressState" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetProgressState
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetExtrapolate" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetExtrapolate
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetPhysics" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetPhysics
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetPosition" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetPosition
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetVelocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetVelocity
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetRelativeVelocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetRelativeVelocity
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetRotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetRotation
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetRotationOffset" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetRotationOffset
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetRotationVelocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetRotationVelocity
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetHeading" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetHeading
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetTrackSlope" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetTrackSlope
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetTrackGround" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetTrackGround
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetTrackLimits" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetTrackLimits
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGroundOffset" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGroundOffset
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGravity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGravity
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetDrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetDrag
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetWindFactor" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetWindFactor
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetLimits" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetLimits
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetNoBlocking" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetNoBlocking
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetCollideStop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetCollideStop
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetLimitsStop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetLimitsStop
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGunshipMoveTypeData" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGunshipMoveTypeData
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGunshipMoveTypeData-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGunshipMoveTypeData (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGunshipMoveTypeData-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGunshipMoveTypeData (overload 2)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetAirMoveTypeData" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetAirMoveTypeData
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetAirMoveTypeData-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetAirMoveTypeData (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetAirMoveTypeData-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetAirMoveTypeData (overload 2)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetAirMoveTypeData-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetAirMoveTypeData (overload 3)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGroundMoveTypeData" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGroundMoveTypeData
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGroundMoveTypeData-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGroundMoveTypeData (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGroundMoveTypeData-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGroundMoveTypeData (overload 2)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGroundMoveTypeData-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGroundMoveTypeData (overload 3)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetMoveDef" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetMoveDef
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ObjectRenderingTable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ObjectRenderingTable
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PieceInfo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  PieceInfo
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plane/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Plane
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PlatformVideoMode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  PlatformVideoMode
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ProjectileParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ProjectileParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RBO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RBO
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ResourceCost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ResourceCost
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.Context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.Context
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.Document/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.Document
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.Element/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.Element
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementForm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementForm
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementFormControl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementFormControl
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementFormControlInput/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementFormControlInput
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementFormControlSelect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementFormControlSelect
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementFormControlTextArea/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementFormControlTextArea
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementProgress/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementProgress
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementPtr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementPtr
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementTabSet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementTabSet
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.ElementText/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.ElementText
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.Event/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.Event
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.EventListener/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.EventListener
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.EventParametersProxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.EventParametersProxy
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.SolLuaDataModel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.SolLuaDataModel
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.Vector2f/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.Vector2f
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.Vector2i/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.Vector2i
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Roster/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Roster
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RulesParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RulesParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RulesSyncedCallins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RulesSyncedCallins
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RulesUnsyncedCallins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RulesUnsyncedCallins
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SaveImageOptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SaveImageOptions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SetUnitHealthAmounts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SetUnitHealthAmounts
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ShaderParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ShaderParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SideSpec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SideSpec
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SoundDeviceSpec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SoundDeviceSpec
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../StrafeAirMoveType/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  StrafeAirMoveType
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SunLightingParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SunLightingParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TeamStats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  TeamStats
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TexCoords/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  TexCoords
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TextColorCode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  TextColorCode
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Texture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Texture
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TextureInfo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  TextureInfo
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  UI
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UniformParam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  UniformParam
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UnitDefDimensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  UnitDefDimensions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UnitScriptTable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  UnitScriptTable
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UnitState/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  UnitState
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VAO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VAO
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VBO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VBO
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VBOAttributeDef/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VBOAttributeDef
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VertexData/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VertexData
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WaterParams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  WaterParams
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WeaponDamages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  WeaponDamages
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WeaponState/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  WeaponState
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../losAccess/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  losAccess
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rgb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  rgb
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rgba/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  rgba
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  xy
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xyz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  xyz
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xyzw/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  xyzw
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  xz
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_15" id="__nav_4_15_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Enums
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_15_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_15">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Enums
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GL-enum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GL
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CMD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CMD
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CMDTYPE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CMDTYPE
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../COB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  COB
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  LOG
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LosMask/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  LosMask
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ProjectileTargetType/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ProjectileTargetType
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../READY_MESSAGE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  READY_MESSAGE
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../READY_STATE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  READY_STATE
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.RmlEventPhase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.RmlEventPhase
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.RmlFocusFlag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.RmlFocusFlag
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.RmlModalFlag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.RmlModalFlag
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.default_action_phase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.default_action_phase
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.font_weight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.font_weight
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.key_identifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.key_identifier
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RmlUi.key_modifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RmlUi.key_modifier
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SFX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SFX
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aliases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Aliases
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Hosting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  托管
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Link/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  链接
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  日志
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../About/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  关于
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#MoveCtrl" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MoveCtrl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.IsEnabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.IsEnabled
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.Enable" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.Enable
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.Disable" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.Disable
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetTag" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetTag
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.GetTag" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.GetTag
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetProgressState" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetProgressState
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetExtrapolate" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetExtrapolate
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetPhysics" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetPhysics
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetPosition" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetPosition
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetVelocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetVelocity
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetRelativeVelocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetRelativeVelocity
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetRotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetRotation
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetRotationOffset" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetRotationOffset
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetRotationVelocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetRotationVelocity
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetHeading" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetHeading
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetTrackSlope" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetTrackSlope
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetTrackGround" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetTrackGround
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetTrackLimits" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetTrackLimits
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGroundOffset" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGroundOffset
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGravity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGravity
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetDrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetDrag
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetWindFactor" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetWindFactor
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetLimits" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetLimits
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetNoBlocking" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetNoBlocking
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetCollideStop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetCollideStop
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetLimitsStop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetLimitsStop
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGunshipMoveTypeData" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGunshipMoveTypeData
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGunshipMoveTypeData-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGunshipMoveTypeData (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGunshipMoveTypeData-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGunshipMoveTypeData (overload 2)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetAirMoveTypeData" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetAirMoveTypeData
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetAirMoveTypeData-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetAirMoveTypeData (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetAirMoveTypeData-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetAirMoveTypeData (overload 2)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetAirMoveTypeData-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetAirMoveTypeData (overload 3)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGroundMoveTypeData" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGroundMoveTypeData
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGroundMoveTypeData-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGroundMoveTypeData (overload 1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGroundMoveTypeData-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGroundMoveTypeData (overload 2)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetGroundMoveTypeData-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetGroundMoveTypeData (overload 3)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MoveCtrl.SetMoveDef" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MoveCtrl.SetMoveDef
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="导航栏" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    API 参考
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../Callins/" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+  <h1>MoveCtrl</h1>
+
+<h2 id="MoveCtrl">MoveCtrl<a class="headerlink" href="#MoveCtrl" title="Permanent link">&para;</a></h2>
+<p><em>class</em></p>
+<p><strong>Members</strong></p>
+<h3 id="MoveCtrl.IsEnabled">MoveCtrl.IsEnabled<a class="headerlink" href="#MoveCtrl.IsEnabled" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L140-L144" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">IsEnabled</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">boolean</span><span class="err">?</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>isEnabled</code> <code>boolean?</code></li>
+</ul>
+<h3 id="MoveCtrl.Enable">MoveCtrl.Enable<a class="headerlink" href="#MoveCtrl.Enable" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L157-L160" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">Enable</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+</ul>
+<h3 id="MoveCtrl.Disable">MoveCtrl.Disable<a class="headerlink" href="#MoveCtrl.Disable" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L173-L176" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">Disable</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+</ul>
+<h3 id="MoveCtrl.SetTag">MoveCtrl.SetTag<a class="headerlink" href="#MoveCtrl.SetTag" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L191-L195" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetTag</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">integer</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>tag</code> <code>integer</code></li>
+</ul>
+<h3 id="MoveCtrl.GetTag">MoveCtrl.GetTag<a class="headerlink" href="#MoveCtrl.GetTag" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L208-L212" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">GetTag</span><span class="p">(</span><span class="nv">integer</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span><span class="err">?</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>tag</code> <code>integer?</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>tag</code> <code>integer?</code> — <code>nil</code> if the unit is not using a script move type.</li>
+</ul>
+<h3 id="MoveCtrl.SetProgressState">MoveCtrl.SetProgressState<a class="headerlink" href="#MoveCtrl.SetProgressState" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L229-L239" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetProgressState</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="o">|</span><span class="mi">1</span><span class="o">|</span><span class="mi">2</span><span class="o">|</span><span class="s2">"done"</span><span class="o">|</span><span class="s2">"active"</span><span class="o">|</span><span class="s2">"failed"</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>state</code> <code>(0|1|2|"done"|"active"|"failed")</code></li>
+</ul>
+<h3 id="MoveCtrl.SetExtrapolate">MoveCtrl.SetExtrapolate<a class="headerlink" href="#MoveCtrl.SetExtrapolate" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L279-L283" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetExtrapolate</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">boolean</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>extrapolate</code> <code>boolean</code></li>
+</ul>
+<h3 id="MoveCtrl.SetPhysics">MoveCtrl.SetPhysics<a class="headerlink" href="#MoveCtrl.SetPhysics" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L298-L310" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetPhysics</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>posX</code> <code>number</code> — Position X component.</li>
+<li><code>posY</code> <code>number</code> — Position Y component.</li>
+<li><code>posZ</code> <code>number</code> — Position Z component.</li>
+<li><code>velX</code> <code>number</code> — Velocity X component.</li>
+<li><code>velY</code> <code>number</code> — Velocity Y component.</li>
+<li><code>velZ</code> <code>number</code> — Velocity Z component.</li>
+<li><code>rotX</code> <code>number</code> — Rotation X component.</li>
+<li><code>rotY</code> <code>number</code> — Rotation Y component.</li>
+<li><code>rotZ</code> <code>number</code> — Rotation Z component.</li>
+</ul>
+<h3 id="MoveCtrl.SetPosition">MoveCtrl.SetPosition<a class="headerlink" href="#MoveCtrl.SetPosition" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L329-L335" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetPosition</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>posX</code> <code>number</code> — Position X component.</li>
+<li><code>posY</code> <code>number</code> — Position Y component.</li>
+<li><code>posZ</code> <code>number</code> — Position Z component.</li>
+</ul>
+<h3 id="MoveCtrl.SetVelocity">MoveCtrl.SetVelocity<a class="headerlink" href="#MoveCtrl.SetVelocity" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L352-L358" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetVelocity</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>velX</code> <code>number</code> — Velocity X component.</li>
+<li><code>velY</code> <code>number</code> — Velocity Y component.</li>
+<li><code>velZ</code> <code>number</code> — Velocity Z component.</li>
+</ul>
+<h3 id="MoveCtrl.SetRelativeVelocity">MoveCtrl.SetRelativeVelocity<a class="headerlink" href="#MoveCtrl.SetRelativeVelocity" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L375-L381" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetRelativeVelocity</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>relVelX</code> <code>number</code> — Relative velocity X component.</li>
+<li><code>relVelY</code> <code>number</code> — Relative velocity Y component.</li>
+<li><code>relVelZ</code> <code>number</code> — Relative velocity Z component.</li>
+</ul>
+<h3 id="MoveCtrl.SetRotation">MoveCtrl.SetRotation<a class="headerlink" href="#MoveCtrl.SetRotation" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L398-L404" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetRotation</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>rotX</code> <code>number</code> — Rotation X component.</li>
+<li><code>rotY</code> <code>number</code> — Rotation Y component.</li>
+<li><code>rotZ</code> <code>number</code> — Rotation Z component.</li>
+</ul>
+<h3 id="MoveCtrl.SetRotationOffset">MoveCtrl.SetRotationOffset<a class="headerlink" href="#MoveCtrl.SetRotationOffset" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L421-L424" target="_blank">source</a>]</p>
+<p><strong>Deprecated:</strong> </p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetRotationOffset</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<h3 id="MoveCtrl.SetRotationVelocity">MoveCtrl.SetRotationVelocity<a class="headerlink" href="#MoveCtrl.SetRotationVelocity" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L432-L438" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetRotationVelocity</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>rotVelX</code> <code>number</code> — Rotation velocity X component.</li>
+<li><code>rotVelY</code> <code>number</code> — Rotation velocity Y component.</li>
+<li><code>rotVelZ</code> <code>number</code> — Rotation velocity Z component.</li>
+</ul>
+<h3 id="MoveCtrl.SetHeading">MoveCtrl.SetHeading<a class="headerlink" href="#MoveCtrl.SetHeading" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L454-L458" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetHeading</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">Heading</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>heading</code> <a href="../Aliases/#Heading"><code>Heading</code></a></li>
+</ul>
+<h3 id="MoveCtrl.SetTrackSlope">MoveCtrl.SetTrackSlope<a class="headerlink" href="#MoveCtrl.SetTrackSlope" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L475-L479" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetTrackSlope</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">boolean</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>trackSlope</code> <code>boolean</code></li>
+</ul>
+<h3 id="MoveCtrl.SetTrackGround">MoveCtrl.SetTrackGround<a class="headerlink" href="#MoveCtrl.SetTrackGround" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L492-L496" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetTrackGround</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">boolean</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>trackGround</code> <code>boolean</code></li>
+</ul>
+<h3 id="MoveCtrl.SetTrackLimits">MoveCtrl.SetTrackLimits<a class="headerlink" href="#MoveCtrl.SetTrackLimits" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L509-L513" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetTrackLimits</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">boolean</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>trackLimits</code> <code>boolean</code></li>
+</ul>
+<h3 id="MoveCtrl.SetGroundOffset">MoveCtrl.SetGroundOffset<a class="headerlink" href="#MoveCtrl.SetGroundOffset" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L526-L530" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetGroundOffset</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>groundOffset</code> <code>number</code></li>
+</ul>
+<h3 id="MoveCtrl.SetGravity">MoveCtrl.SetGravity<a class="headerlink" href="#MoveCtrl.SetGravity" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L543-L547" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetGravity</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>gravityFactor</code> <code>number</code></li>
+</ul>
+<h3 id="MoveCtrl.SetDrag">MoveCtrl.SetDrag<a class="headerlink" href="#MoveCtrl.SetDrag" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L560-L564" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetDrag</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>drag</code> <code>number</code></li>
+</ul>
+<h3 id="MoveCtrl.SetWindFactor">MoveCtrl.SetWindFactor<a class="headerlink" href="#MoveCtrl.SetWindFactor" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L577-L581" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetWindFactor</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>windFactor</code> <code>number</code></li>
+</ul>
+<h3 id="MoveCtrl.SetLimits">MoveCtrl.SetLimits<a class="headerlink" href="#MoveCtrl.SetLimits" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L594-L603" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetLimits</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>minX</code> <code>number</code> — Minimum position X component.</li>
+<li><code>minY</code> <code>number</code> — Minimum position Y component.</li>
+<li><code>minZ</code> <code>number</code> — Minimum position Z component.</li>
+<li><code>maxX</code> <code>number</code> — Maximum position X component.</li>
+<li><code>maxY</code> <code>number</code> — Maximum position Y component.</li>
+<li><code>maxZ</code> <code>number</code> — Maximum position Z component.</li>
+</ul>
+<h3 id="MoveCtrl.SetNoBlocking">MoveCtrl.SetNoBlocking<a class="headerlink" href="#MoveCtrl.SetNoBlocking" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L619-L623" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetNoBlocking</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">boolean</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>noBlocking</code> <code>boolean</code></li>
+</ul>
+<h3 id="MoveCtrl.SetCollideStop">MoveCtrl.SetCollideStop<a class="headerlink" href="#MoveCtrl.SetCollideStop" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L642-L646" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetCollideStop</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">boolean</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>collideStop</code> <code>boolean</code></li>
+</ul>
+<h3 id="MoveCtrl.SetLimitsStop">MoveCtrl.SetLimitsStop<a class="headerlink" href="#MoveCtrl.SetLimitsStop" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L659-L663" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetLimitsStop</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">boolean</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>limitsStop</code> <code>boolean</code></li>
+</ul>
+<h3 id="MoveCtrl.SetGunshipMoveTypeData">MoveCtrl.SetGunshipMoveTypeData<a class="headerlink" href="#MoveCtrl.SetGunshipMoveTypeData" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L798-L803" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetGunshipMoveTypeData</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">HoverAirMoveType</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>moveType</code> <a href="../HoverAirMoveType/#HoverAirMoveType"><code>HoverAirMoveType</code></a></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>numAssignedValues</code> <code>integer</code></li>
+</ul>
+<h3 id="MoveCtrl.SetGunshipMoveTypeData-1">MoveCtrl.SetGunshipMoveTypeData (overload 1)<a class="headerlink" href="#MoveCtrl.SetGunshipMoveTypeData-1" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L804-L816" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetGunshipMoveTypeData</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nv">GenericMoveTypeBooleanKey</span><span class="o">|</span><span class="s2">"collide"</span><span class="o">|</span><span class="s2">"dontLand"</span><span class="o">|</span><span class="s2">"airStrafe"</span><span class="o">|</span><span class="s2">"useSmoothMesh"</span><span class="o">|</span><span class="s2">"bankingAllowed"</span><span class="p">),</span><span class="w"> </span><span class="nv">boolean</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>key</code> <code>(GenericMoveTypeBooleanKey|"collide"|"dontLand"|"airStrafe"|"useSmoothMesh"|"bankingAllowed")</code></li>
+<li><code>value</code> <code>boolean</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>numAssignedValues</code> <code>integer</code></li>
+</ul>
+<h3 id="MoveCtrl.SetGunshipMoveTypeData-2">MoveCtrl.SetGunshipMoveTypeData (overload 2)<a class="headerlink" href="#MoveCtrl.SetGunshipMoveTypeData-2" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L817-L832" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetGunshipMoveTypeData</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nv">GenericMoveTypeNumberKey</span><span class="o">|</span><span class="s2">"wantedHeight"</span><span class="o">|</span><span class="s2">"accRate"</span><span class="o">|</span><span class="s2">"decRate"</span><span class="o">|</span><span class="s2">"turnRate"</span><span class="o">|</span><span class="s2">"altitudeRate"</span><span class="o">|</span><span class="s2">"currentBank"</span><span class="o">|</span><span class="s2">"currentPitch"</span><span class="p">...),</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>key</code> <code>(GenericMoveTypeNumberKey|"wantedHeight"|"accRate"|"decRate"|"turnRate"|"altitudeRate"|"currentBank"|"currentPitch"...)</code></li>
+<li><code>value</code> <code>number</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>numAssignedValues</code> <code>integer</code></li>
+</ul>
+<h3 id="MoveCtrl.SetAirMoveTypeData">MoveCtrl.SetAirMoveTypeData<a class="headerlink" href="#MoveCtrl.SetAirMoveTypeData" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L860-L865" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetAirMoveTypeData</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">StrafeAirMoveType</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>moveType</code> <a href="../StrafeAirMoveType/#StrafeAirMoveType"><code>StrafeAirMoveType</code></a></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>numAssignedValues</code> <code>integer</code></li>
+</ul>
+<h3 id="MoveCtrl.SetAirMoveTypeData-1">MoveCtrl.SetAirMoveTypeData (overload 1)<a class="headerlink" href="#MoveCtrl.SetAirMoveTypeData-1" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L866-L876" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetAirMoveTypeData</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nv">GenericMoveTypeBooleanKey</span><span class="o">|</span><span class="s2">"collide"</span><span class="o">|</span><span class="s2">"useSmoothMesh"</span><span class="o">|</span><span class="s2">"loopbackAttack"</span><span class="p">),</span><span class="w"> </span><span class="nv">boolean</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>key</code> <code>(GenericMoveTypeBooleanKey|"collide"|"useSmoothMesh"|"loopbackAttack")</code></li>
+<li><code>value</code> <code>boolean</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>numAssignedValues</code> <code>integer</code></li>
+</ul>
+<h3 id="MoveCtrl.SetAirMoveTypeData-2">MoveCtrl.SetAirMoveTypeData (overload 2)<a class="headerlink" href="#MoveCtrl.SetAirMoveTypeData-2" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L877-L897" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetAirMoveTypeData</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nv">GenericMoveTypeNumberKey</span><span class="o">|</span><span class="s2">"wantedHeight"</span><span class="o">|</span><span class="s2">"turnRadius"</span><span class="o">|</span><span class="s2">"accRate"</span><span class="o">|</span><span class="s2">"decRate"</span><span class="o">|</span><span class="s2">"maxAcc"</span><span class="o">|</span><span class="s2">"maxDec"</span><span class="o">|</span><span class="s2">"maxBank"</span><span class="p">...),</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>key</code> <code>(GenericMoveTypeNumberKey|"wantedHeight"|"turnRadius"|"accRate"|"decRate"|"maxAcc"|"maxDec"|"maxBank"...)</code></li>
+<li><code>value</code> <code>number</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>numAssignedValues</code> <code>integer</code></li>
+</ul>
+<h3 id="MoveCtrl.SetAirMoveTypeData-3">MoveCtrl.SetAirMoveTypeData (overload 3)<a class="headerlink" href="#MoveCtrl.SetAirMoveTypeData-3" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L898-L905" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetAirMoveTypeData</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="s2">"maneuverBlockTime"</span><span class="p">),</span><span class="w"> </span><span class="nv">integer</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>key</code> <code>("maneuverBlockTime")</code></li>
+<li><code>value</code> <code>integer</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>numAssignedValues</code> <code>integer</code></li>
+</ul>
+<h3 id="MoveCtrl.SetGroundMoveTypeData">MoveCtrl.SetGroundMoveTypeData<a class="headerlink" href="#MoveCtrl.SetGroundMoveTypeData" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L929-L934" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetGroundMoveTypeData</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="nv">GroundMoveType</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>moveType</code> <a href="../GroundMoveType/#GroundMoveType"><code>GroundMoveType</code></a></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>numAssignedValues</code> <code>integer</code></li>
+</ul>
+<h3 id="MoveCtrl.SetGroundMoveTypeData-1">MoveCtrl.SetGroundMoveTypeData (overload 1)<a class="headerlink" href="#MoveCtrl.SetGroundMoveTypeData-1" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L935-L945" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetGroundMoveTypeData</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nv">GenericMoveTypeBooleanKey</span><span class="o">|</span><span class="s2">"atGoal"</span><span class="o">|</span><span class="s2">"atEndOfPath"</span><span class="o">|</span><span class="s2">"pushResistant"</span><span class="p">),</span><span class="w"> </span><span class="nv">boolean</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>key</code> <code>(GenericMoveTypeBooleanKey|"atGoal"|"atEndOfPath"|"pushResistant")</code></li>
+<li><code>value</code> <code>boolean</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>numAssignedValues</code> <code>integer</code></li>
+</ul>
+<h3 id="MoveCtrl.SetGroundMoveTypeData-2">MoveCtrl.SetGroundMoveTypeData (overload 2)<a class="headerlink" href="#MoveCtrl.SetGroundMoveTypeData-2" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L946-L962" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetGroundMoveTypeData</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nv">GenericMoveTypeNumberKey</span><span class="o">|</span><span class="s2">"turnRate"</span><span class="o">|</span><span class="s2">"turnAccel"</span><span class="o">|</span><span class="s2">"accRate"</span><span class="o">|</span><span class="s2">"decRate"</span><span class="o">|</span><span class="s2">"myGravity"</span><span class="o">|</span><span class="s2">"maxReverseDist"</span><span class="o">|</span><span class="s2">"minReverseAngle"</span><span class="p">...),</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>key</code> <code>(GenericMoveTypeNumberKey|"turnRate"|"turnAccel"|"accRate"|"decRate"|"myGravity"|"maxReverseDist"|"minReverseAngle"...)</code></li>
+<li><code>value</code> <code>number</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>numAssignedValues</code> <code>integer</code></li>
+</ul>
+<h3 id="MoveCtrl.SetGroundMoveTypeData-3">MoveCtrl.SetGroundMoveTypeData (overload 3)<a class="headerlink" href="#MoveCtrl.SetGroundMoveTypeData-3" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L963-L970" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetGroundMoveTypeData</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="s2">"minScriptChangeHeading"</span><span class="p">),</span><span class="w"> </span><span class="nv">integer</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">integer</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>key</code> <code>("minScriptChangeHeading")</code></li>
+<li><code>value</code> <code>integer</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>numAssignedValues</code> <code>integer</code></li>
+</ul>
+<h3 id="MoveCtrl.SetMoveDef">MoveCtrl.SetMoveDef<a class="headerlink" href="#MoveCtrl.SetMoveDef" title="Permanent link">&para;</a></h3>
+<p><em>function</em></p>
+<p>[<a href="https://github.com/beyond-all-reason/RecoilEngine/blob/8688dcc2690a8db4e6624dd516ef5da8cf3c5ec8/rts/Lua/LuaSyncedMoveCtrl.cpp#L981-L986" target="_blank">source</a>]</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nv">MoveCtrl</span><span class="p">.</span><span class="nf">SetMoveDef</span><span class="p">(</span><span class="nv">UnitID</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nv">integer</span><span class="o">|</span><span class="nv">string</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">boolean</span>
+</span></code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>unitID</code> <a href="../Aliases/#UnitID"><code>UnitID</code></a></li>
+<li><code>moveDef</code> <code>(integer|string)</code> — Name or path type of the MoveDef.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>success</code> <code>boolean</code> — <code>true</code> if the <code>MoveDef</code> was set, <code>false</code> if <code>unitID</code> or <code>moveDef</code> were invalid, or if the unit does not support a <code>MoveDef</code>.</li>
+</ul>
+
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">Lua-API</span>
+      
+    
+  </nav>
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Menu/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Menu">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Menu
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../ObjectRenderingTable/" class="md-footer__link md-footer__link--next" aria-label="下一页: ObjectRenderingTable">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                ObjectRenderingTable
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      这里的内容来自不同的网站与文档
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      
+<div class="md-progress" data-md-component="progress" role="progressbar" aria-label="Loading"></div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.path","navigation.prune","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.suggest","search.highlight","search.share","toc.follow"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","clipboard.error":"Could not copy to clipboard","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+    
+  </body>
+</html>

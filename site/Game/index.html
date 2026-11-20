@@ -1,0 +1,1411 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Spring RTS Wiki">
+      
+      
+        <meta name="author" content="Cru">
+      
+      
+        <link rel="canonical" href="https://www.example.com/Game/">
+      
+      
+      
+        <link rel="prev" href="./..">
+      
+      
+        <link rel="next" href="../Develop/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../Assets/spring-logo-header-small.png">
+      <meta name="generator" content="zensical-0.1.2">
+    
+    
+      
+        <title>游戏 - Spring RTS Wiki</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        跳转至
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="./.." title="Spring RTS Wiki" class="md-header__button md-logo" aria-label="Spring RTS Wiki" data-md-component="logo">
+      
+  <img src="../Assets/spring-logo-header-small.png" alt="Spring RTS Wiki">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">导航栏</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spring RTS Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              游戏
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun-moon" viewBox="0 0 24 24"><path d="M12 2v2M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715M16 12a4 4 0 0 0-4-4M19 5l-1.256 1.256M20 12h2"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">查找</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="查找">
+  <button type="button" class="md-search__button">
+    查找
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./.." class="md-tabs__link">
+        
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="././" class="md-tabs__link">
+        
+  
+  游戏
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Develop/" class="md-tabs__link">
+        
+  
+  开发
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../lua-api/" class="md-tabs__link">
+          
+  
+  API 参考
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Hosting/" class="md-tabs__link">
+        
+  
+  托管
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Link/" class="md-tabs__link">
+        
+  
+  链接
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Log/" class="md-tabs__link">
+        
+  
+  日志
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../About/" class="md-tabs__link">
+        
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="./.." title="Spring RTS Wiki" class="md-nav__button md-logo" aria-label="Spring RTS Wiki" data-md-component="logo">
+      
+  <img src="../Assets/spring-logo-header-small.png" alt="Spring RTS Wiki">
+
+    </a>
+    Spring RTS Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  首页
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  游戏
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  游戏
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#zero-k" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Zero-K
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spring1944" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Spring:1944
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evolution-rts" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Evolution RTS
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        内核恐慌
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on-the-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        On The Edge
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        金属派系
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        被诅咒者
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#journeywar" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Journeywar
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        专有的
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        冲突地球
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        星球大战:帝国之冬
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spring" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Spring机甲指挥官传承项目
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ta-derived" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TA-derived
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        平衡的歼灭
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nota" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NOTA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ta-prime" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TA Prime
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        科技歼灭
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xta" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        XTA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spring_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        在Spring安装游戏
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Develop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  开发
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../lua-api/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  API 参考
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hosting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  托管
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Link/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  链接
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  日志
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../About/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  关于
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#zero-k" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Zero-K
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spring1944" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Spring:1944
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evolution-rts" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Evolution RTS
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        内核恐慌
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on-the-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        On The Edge
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        金属派系
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        被诅咒者
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#journeywar" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Journeywar
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        专有的
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        冲突地球
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        星球大战:帝国之冬
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spring" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Spring机甲指挥官传承项目
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ta-derived" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TA-derived
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        平衡的歼灭
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nota" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NOTA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ta-prime" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TA Prime
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        科技歼灭
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xta" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        XTA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spring_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        在Spring安装游戏
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="_1">游戏<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>有不少游戏是为 Spring Engine 制作的。以下是一些较受欢迎的，并按使用条款排序。</p>
+<p>你可以通过大厅自动下载游戏。有些游戏还提供独立安装程序。</p>
+<p>这些游戏均可免费下载和游玩，且可能允许修改，但请务必在修改前仔细阅读授权条款。</p>
+<h2 id="zero-k"><a href="https://zero-k.info/">Zero-K</a><a class="headerlink" href="#zero-k" title="Permanent link">&para;</a></h2>
+<p>音乐用 <a href="https://github.com/ZeroK-RTS/Zero-K/blob/f24c14f31bcd1040e7dce66336ec39fce63b7de9/sounds/music/license.txt">CC-BY-NC-ND</a>，代码和所有其他资源用 <a href="https://github.com/ZeroK-RTS/Zero-K/blob/079af01d8781e9785d21e41057d0d67f0c571b12/legal.txt">GPL/PD</a></p>
+<p><img align="left" alt="" height="200" src="https://dummyimage.com/300x200/eee/aaa" width="300" /></p>
+<p>Zero-K 是一款节奏快、竞争激烈的游戏，注重简化的经济系统和先进的界面，将注意力从繁琐任务中带回战斗。庞大的有趣且独特的单位阵容和多样的单位能力为游戏增添了极大的战术和战略深度。（本游戏可在 <a href="https://zerok.itch.io/zero-k">Itch.io</a> 和<a href="https://store.steampowered.com/app/334920/ZeroK/">Steam</a>上游玩。）</p>
+<p><br clear="all"/></p>
+<h2 id="spring1944"><a href="https://github.com/spring1944/spring1944/wiki">Spring:1944</a><a class="headerlink" href="#spring1944" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/spring1944/spring1944/blob/1e36bbf93f42018bb9f52af8c3dc3e9ffa9fbeff/docs/License.txt">(CC-BY-NC)</a></p>
+<p><img align="left" alt="" height="200" src="https://dummyimage.com/300x200/eee/aaa" width="300" /></p>
+<p>Spring:1944 是一款以二战为主题的游戏，拥有八支完全作战的军队（美国、德国、苏联、英国、日本、意大利、匈牙利、瑞典），单位和实力都与当时相符。现实主义仅次于打造一款有趣且易于上手的游戏。（主页，YouTube 1，YouTube 2，子论坛）</p>
+<p><br clear="all"/></p>
+<h2 id="evolution-rts"><a href="https://www.evolutionrts.info/">Evolution RTS</a><a class="headerlink" href="#evolution-rts" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/EvolutionRTS/Evolution-RTS/blob/f8a5df79b384f28fa8705f58df2cd2b580f0c982/license.txt">(CC-BY-NC)</a></p>
+<p><img align="left" alt="" height="200" src="https://dummyimage.com/300x200/eee/aaa" width="300" /></p>
+<p>一场新的战争正在酝酿。一场激烈的冲突，发生在六大殖民地之间，每个人都坚信自己是正确的，也都坚信自己有能力击败敌人。但他们需要将军。他们需要士兵。他们需要你。（本游戏可在 Itch.io 和Steam上游玩。）</p>
+<p><br clear="all"/></p>
+<h2 id="_2"><a href="https://springrts.com/wiki/Kernel_Panic">内核恐慌</a><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><a href="https://springrts.com/wiki/Kernel_Panic#License:">(FOSS)</a></p>
+<p><img align="left" alt="" height="200" src="https://dummyimage.com/300x200/eee/aaa" width="300" /></p>
+<p>一款以<strong>电脑内部</strong>战斗为核心的游戏，有三个独特阵营：系统、黑客和网络，在毁灭战士的矩阵中展开战争！在KP中不存在资源经济，唯一的限制是时间和空间。</p>
+<p><br clear="all"/></p>
+<h2 id="on-the-edge"><a href="https://springfiles.com/spring/games/edge-1">On The Edge</a><a class="headerlink" href="#on-the-edge" title="Permanent link">&para;</a></h2>
+<p>(GPL, <a href="https://github.com/PepeAmpere/On-The-Edge/blob/master/README.md">CC-BY-NC-SA</a>, <a href="https://github.com/PepeAmpere/On-The-Edge/blob/master/wiki/credits.md">etc</a>)</p>
+<p><img align="left" alt="" height="200" src="https://dummyimage.com/300x200/eee/aaa" width="300" /></p>
+<p>首个春季MOBA游戏，拥有独特的游戏前英雄配置。正在大量开发中。（On The Edge论坛帖子)</p>
+<p><br clear="all"/></p>
+<h2 id="_3"><a href="http://www.metalfactions.pt/">金属派系</a><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><a href="http://www.metalfactions.pt/about.html#license">(CC-BY-ND，带有 GPL/PD 代码)</a></p>
+<p><img align="left" alt="" height="200" src="https://dummyimage.com/300x200/eee/aaa" width="300" /></p>
+<p>一款不断进化的游戏，最初作为TA模组，目前包含四个阵营：AVEN、GEAR、CLAW和SPHERE。指挥官可以变形以适应不同的玩法风格，并且很容易被复活。经济规模更严格地与地图控制挂钩。</p>
+<p><br clear="all"/></p>
+<h2 id="_4"><a href="https://springrts.com/phpbb/viewtopic.php?f=54&amp;t=23988#p447937">被诅咒者</a><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p><a href="https://springrts.com/phpbb/viewtopic.php?f=54&amp;t=23988&amp;p=566530&amp;hilit=license#p566530">(CC-BY-NC-SA)</a></p>
+<p><img align="left" alt="" height="200" src="https://dummyimage.com/300x200/eee/aaa" width="300" /></p>
+<p>游戏讲述的是骨骼、亡灵、恶魔、星际战士和魔法在未来环境中的存在。它是将许多热门即时战略游戏（如星际争霸和命令与征服）中玩法元素的新鲜混合体。（主页、YouTube 1、YouTube 2、子论坛)</p>
+<p><br clear="all"/></p>
+<h2 id="journeywar"><a href="https://drive.google.com/file/d/0Bx_Nvv6rzVvgLXJkckpYaDhaOVU/view">Journeywar</a><a class="headerlink" href="#journeywar" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/PicassoCT/Journeywar/blob/97aa399693cd04097367eb5c587eeb590723b700/LICENSE">(GPLv3)</a></p>
+<p><img align="left" alt="" height="200" src="https://dummyimage.com/300x200/eee/aaa" width="300" /></p>
+<p>Journeywar 是 Combine 与 Exobiotics 之间的最终决战。加入战斗，从全新的战略视角重新发现HL宇宙。（开发者博客，子论坛)</p>
+<p><br clear="all"/></p>
+<h2 id="_5">专有的<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>这些游戏可能免费，也可能不是。未经游戏作者明确许可，修改其内容（即艺术素材）是不允许的，尽管代码是 GPL 格式，且部分游戏包含大量支持 GPL 的内容库。</p>
+<h2 id="_6"><a href="https://www.moddb.com/games/conflict-terra/tutorials/how-to-start-a-game-of-conflict-terra">冲突地球</a><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p><img align="left" alt="" height="200" src="https://dummyimage.com/300x200/eee/aaa" width="300" /></p>
+<p>Conflict Terra 是一款独特的游戏，强调机动性，并拥有Spring首个大型“收集与交付”经济系统，拥有独特的艺术风格。在瞬息万变的战场上扮演两个阵营之一，努力争取胜负。（主页，目前为专有，最后已知的公有领域版本，子论坛)</p>
+<p><br clear="all"/></p>
+<h2 id="_7"><a href="https://springrts.com/phpbb/viewforum.php?f=46">星球大战:帝国之冬</a><a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p><img align="left" alt="" height="200" src="https://dummyimage.com/300x200/eee/aaa" width="300" /></p>
+<p>一款以星球大战为主题的游戏，背景设定在《绝地归来》之后动荡的时代。</p>
+<p><br clear="all"/></p>
+<h2 id="spring"><a href="https://github.com/SpringMCLegacy/SpringMCLegacy/wiki">Spring机甲指挥官传承项目</a><a class="headerlink" href="#spring" title="Permanent link">&para;</a></h2>
+<p><img align="left" alt="" height="200" src="https://dummyimage.com/300x200/eee/aaa" width="300" /></p>
+<p>一款以Battletech宇宙为背景的酷型即时战略游戏。</p>
+<p><br clear="all"/></p>
+<h2 id="ta-derived">TA-derived<a class="headerlink" href="#ta-derived" title="Permanent link">&para;</a></h2>
+<p>这些游戏至少部分内容来源于全面歼灭游戏（版权归Wargaming所有）的数据。因此，它们的发行可能违反版权法，因此并未获得 Spring RTS 团队的官方认可。</p>
+<h2 id="_8"><a href="https://springrts.com/wiki/Balanced_Annihilation#Links">平衡的歼灭</a><a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p><img align="left" alt="" height="200" src="https://dummyimage.com/300x200/eee/aaa" width="300" /></p>
+<p>平衡歼灭（BA）是TA的粉丝模组，源自TA Demo Recorder（1999年）的开发，旨在基于原作的画面和平衡性进行扩展。BA的玩法以逐步增重的单位和不断增长的经济为基础展开。在风暴行动中，许多策略都可行，包括专注于地图控制、侵略性、防御、空中力量、海上力量或机动性。BA还举办竞技的1v1比赛，如Crown Cup 3，吸引了64名选手参加。
+(网站，Discord)</p>
+<p><br clear="all"/></p>
+<h2 id="nota"><a href="https://springrts.com/phpbb/viewforum.php?f=55">NOTA</a><a class="headerlink" href="#nota" title="Permanent link">&para;</a></h2>
+<p><img align="left" alt="" height="200" src="https://dummyimage.com/300x200/eee/aaa" width="300" /></p>
+<p>Not Original Total Annihilation是对Total Annihilation宇宙的重新思考，侧重于战略性、基地导向的玩法。随着重新调整的单位规模，大规模战斗爆发，数百个单位和数十种单位类型交战。NOTA全新设计的空海玩法要求你参与所有元素，将冲突的主导权掌握在你手中。（本游戏可通过独立大厅进行。）</p>
+<p><br clear="all"/></p>
+<h2 id="ta-prime"><a href="http://fluidplay.co/taprime">TA Prime</a><a class="headerlink" href="#ta-prime" title="Permanent link">&para;</a></h2>
+<p><img align="left" alt="" height="200" src="https://dummyimage.com/300x200/eee/aaa" width="300" /></p>
+<p>这是全面歼灭的高度打磨前传，拥有完整的科技树、单位技能以及类似《C&amp;C》系列的强力剪刀石头布反制系统。</p>
+<p><br clear="all"/></p>
+<h2 id="_9"><a href="https://springrts.com/phpbb/viewforum.php?f=91">科技歼灭</a><a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p><img align="left" alt="" height="200" src="https://dummyimage.com/300x200/eee/aaa" width="300" /></p>
+<p>这款游戏更大、更精彩、更史诗！把你的指挥官从一个小小的指挥官提升到银河指挥官的科技！（目前无主页）</p>
+<p><br clear="all"/></p>
+<h2 id="xta"><a href="https://springrts.com/wiki/XTA">XTA</a><a class="headerlink" href="#xta" title="Permanent link">&para;</a></h2>
+<p><img align="left" alt="" height="200" src="https://dummyimage.com/300x200/eee/aaa" width="300" /></p>
+<p>最初由瑞典Yankspankers开发为全面歼灭系列游戏，XTA是随Spring首批版本发布的原始公开游戏。SY们对这款游戏的开发已经停止了一段时间，但社区仍在游玩和积极开发。</p>
+<p><br clear="all"/></p>
+<h2 id="spring_1">在Spring安装游戏<a class="headerlink" href="#spring_1" title="Permanent link">&para;</a></h2>
+<p>上面列出的不少游戏都附带独立安装包，这让操作变得简单。去他们的网站看看吧！否则，像 SpringLobby 这样的大厅会在你加入游戏室时帮你下载所有内容。</p>
+<p>游戏也可以手动下载为 .sdz/.sd7 文件，例如 BA750.sd7 或 XTA.sdz，并放入 ...\My Documents\My Games\Spring\Games 或 ...\Spring\games 文件夹（Linux/Unix/Mac 上为 ~/.spring/games/）。如果你的房间大厅找不到你的游戏，请阅读本页的建议。 你可以在同一个引擎安装中安装多个游戏。地图也是如此。把它们放到一个叫maps的文件夹里，和游戏文件夹同一个。</p>
+<p>游戏还不够多吗？还有一些没列出的，或者自己做游戏吧！</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="./.." class="md-footer__link md-footer__link--prev" aria-label="上一页: 首页">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                首页
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Develop/" class="md-footer__link md-footer__link--next" aria-label="下一页: 开发">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                开发
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      这里的内容来自不同的网站与文档
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      
+<div class="md-progress" data-md-component="progress" role="progressbar" aria-label="Loading"></div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.path","navigation.prune","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.suggest","search.highlight","search.share","toc.follow"],"redirect":null,"search":"../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","clipboard.error":"Could not copy to clipboard","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+    
+  </body>
+</html>
